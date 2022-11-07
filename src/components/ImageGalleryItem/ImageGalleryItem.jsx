@@ -21,7 +21,7 @@ class ImageGalleryItem extends Component {
   };
 
   render() {
-    const { showModal, showLoader } = this.state;
+    const { showModal } = this.state;
     const { openModal, closeModal } = this;
     const { url, name, largeImg } = this.props;
     return (
