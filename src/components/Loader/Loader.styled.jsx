@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LoaderEl = styled.div`
+export const StyledLoader = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;

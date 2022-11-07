@@ -14,16 +14,13 @@ export class App extends Component {
   state = {
     query: '',
     currentPage: 1,
-    // lastPage: false,
     images: [],
     showLoader: false,
     totalImages: null,
     showBtn: false,
-    // showModal: false,
-    // loadMore: false,
   };
 
-  async componentDidUpdate(prevProps, prevState) {
+  async componentDidUpdate(_, prevState) {
     const { query, currentPage } = this.state;
     if (prevState.query !== query) {
       this.setState({ showLoader: true, showBtn: false });
@@ -79,7 +76,7 @@ export class App extends Component {
     if (this.state.query === newQuery) {
       return;
     }
-    // // console.log(value);
+
     this.setState({
       query: newQuery,
       currentPage: 1,
