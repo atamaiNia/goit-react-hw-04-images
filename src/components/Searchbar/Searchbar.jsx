@@ -1,49 +1,42 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import { ToastError } from 'components/Notification/ToastError';
 import { ImSearch } from 'react-icons/im';
 import { StyledSearchbar, Form, Btn, Input } from './Searchbar.styled';
 
-export default class Searchbar extends Component {
-  state = {
-    query: '',
-  };
+export default function Searchbar({ onSubmit }) {
+  const [query, setQuery] = useState('');
 
-  handleQueryChange = e => {
+  const handleQueryChange = e => {
     console.log(e.currentTarget.value);
-    this.setState({ query: e.currentTarget.value.toLowerCase() });
+    setQuery(e.currentTarget.value.toLowerCase());
   };
 
-  handleSubmit = e => {
-    const { query } = this.state;
+  const handleSubmit = e => {
     e.preventDefault();
     if (query.trim() === '') {
       return ToastError('Enter something to start searching');
     }
-    this.props.onSubmit(query);
+    onSubmit(query);
     console.log(query);
-    this.setState({ query: '' });
+    setQuery('');
   };
 
-  render() {
-    const { query } = this.state;
-    const { handleQueryChange, handleSubmit } = this;
-    return (
-      <StyledSearchbar>
-        <Form onSubmit={handleSubmit}>
-          <Btn type="submit">
-            <ImSearch style={{ fontSize: 18 }} />
-          </Btn>
+  return (
+    <StyledSearchbar>
+      <Form onSubmit={handleSubmit}>
+        <Btn type="submit">
+          <ImSearch style={{ fontSize: 18 }} />
+        </Btn>
 
-          <Input
-            type="text"
-            autoComplete="off"
-            autoFocus
-            placeholder="Search images and photos"
-            value={query}
-            onChange={handleQueryChange}
-          />
-        </Form>
-      </StyledSearchbar>
-    );
-  }
+        <Input
+          type="text"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search images and photos"
+          value={query}
+          onChange={handleQueryChange}
+        />
+      </Form>
+    </StyledSearchbar>
+  );
 }
