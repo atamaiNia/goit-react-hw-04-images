@@ -80,7 +80,7 @@ export default function App() {
   const handleBtnClick = () => {
     setCurrentPage(prevCurrentPage => prevCurrentPage + 1);
     const scroll = Scroll.animateScroll;
-    scroll.scrollMore(590, { duration: 2500 });
+    scroll.scrollMore(500, { duration: 3000 });
   };
 
   return (
