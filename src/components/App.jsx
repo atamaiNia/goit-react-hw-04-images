@@ -20,9 +20,6 @@ export default function App() {
   const [showBtn, setShowBtn] = useState(false);
 
   useEffect(() => {
-    if (!query) {
-      return;
-    }
     (async () => {
       if (query) {
       }
